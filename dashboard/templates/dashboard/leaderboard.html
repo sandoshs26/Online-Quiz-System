@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/leaderboard.css' %}" />
+{% endblock %} {% block content %}
+
+<div class="leaderboard-page">
+  <div
+    class="leaderboard-header d-flex justify-content-between align-items-center flex-wrap gap-2"
+  >
+    <div>
+      <div class="leaderboard-kicker">RANKINGS</div>
+      <h2>Leaderboard</h2>
+    </div>
+    <a
+      href="{% if user.role == 'TEACHER' %}
+      {% url 'teacher_dashboard' %}
+      {% else %}
+      {% url 'student_dashboard' %}
+      {% endif %}"
+      class="btn btn-outline-primary btn-sm"
+    >
+      <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+    </a>
+  </div>
+
+  <div class="card leaderboard-card">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Student</th>
+              <th>Quiz</th>
+              <th>Score</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for result in leaderboard %}
+            <tr>
+              <td>
+                <span
+                  class="rank-badge {% if forloop.counter == 1 %}rank-1{% elif forloop.counter == 2 %}rank-2{% elif forloop.counter == 3 %}rank-3{% endif %}"
+                >
+                  {{ forloop.counter }}
+                </span>
+              </td>
+              <td>{{ result.student.username }}</td>
+              <td>{{ result.quiz.title }}</td>
+              <td><span class="score-pill">{{ result.score }}</span></td>
+              <td>{{ result.created_at|date:"d-m-Y h:i-A" }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

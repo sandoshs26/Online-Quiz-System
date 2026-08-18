@@ -1,0 +1,96 @@
+.manage-users-page {
+  padding: 2rem 0 2.5rem;
+}
+
+.manage-users-header {
+  margin-bottom: 1.25rem;
+}
+
+.manage-users-header h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 2.3vw, 2.5rem);
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.manage-users-kicker {
+  letter-spacing: 0.12rem;
+  color: #0d6efd;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.user-section {
+  margin-bottom: 1.5rem;
+}
+
+.section-card {
+  border: 1px solid rgba(13, 110, 253, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.05);
+  background: #fff;
+  overflow: hidden;
+}
+
+.section-card .card-header {
+  background: linear-gradient(
+    135deg,
+    rgba(13, 110, 253, 0.08),
+    rgba(13, 110, 253, 0.02)
+  );
+  border-bottom: 1px solid rgba(13, 110, 253, 0.08);
+  padding: 1rem 1.2rem;
+}
+
+.section-card .card-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.section-card .card-body {
+  padding: 0;
+}
+
+.manage-users-table thead th {
+  background: #f8fbff;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.manage-users-table th,
+.manage-users-table td {
+  padding: 0.9rem 1rem;
+  vertical-align: middle;
+}
+
+.manage-users-table tbody tr:hover {
+  background: #f8fbff;
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.38rem 0.7rem;
+  border-radius: 50rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.back-link {
+  margin-top: 1rem;
+}
+
+.back-link .btn {
+  border-radius: 0.7rem;
+  padding: 0.72rem 1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 767.98px) {
+  .manage-users-page {
+    padding-top: 1.25rem;
+  }
+}

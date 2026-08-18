@@ -1,0 +1,104 @@
+.view-questions-page {
+  padding-bottom: 1rem;
+}
+
+.view-questions-header {
+  margin-bottom: 1rem;
+}
+
+.view-questions-kicker {
+  letter-spacing: 0.12rem;
+  color: #0d6efd;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.view-questions-page h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2vw, 2.4rem);
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.question-card {
+  border: 1px solid rgba(13, 110, 253, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+  background: #fff;
+}
+
+.question-card .card-body {
+  padding: 1.1rem 1.2rem;
+}
+
+.question-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.question-text {
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.7rem;
+}
+
+.option-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: #374151;
+}
+
+.option-list li {
+  margin-bottom: 0.3rem;
+}
+
+.correct-answer {
+  margin-top: 0.8rem;
+}
+
+.correct-answer .badge {
+  font-size: 0.78rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.action-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.action-row .btn {
+  border-radius: 0.6rem;
+  font-weight: 600;
+}
+
+.toolbox {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+@media (max-width: 576px) {
+  .view-questions-page h2 {
+    font-size: 1.6rem;
+  }
+
+  .action-row {
+    flex-direction: column;
+  }
+
+  .action-row .btn {
+    width: 100%;
+  }
+}

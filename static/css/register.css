@@ -1,0 +1,132 @@
+.register-page-shell {
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 0;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 560px;
+  border: none;
+  border-radius: 1.1rem;
+  overflow: hidden;
+  box-shadow: 0 14px 35px rgba(13, 110, 253, 0.12);
+}
+
+.register-card .card-header {
+  background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+  border-bottom: none;
+  padding: 1.15rem 1.25rem 0.8rem;
+  color: #fff;
+}
+
+.register-card .card-header h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.register-card .card-header p {
+  margin: 0.35rem 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.register-card .card-body {
+  padding: 1.1rem 1.4rem 1rem;
+}
+
+.register-form {
+  margin-bottom: 0;
+}
+
+.register-form .mb-3 {
+  margin-bottom: 0.7rem !important;
+}
+
+.register-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.92rem;
+}
+
+.register-form input,
+.register-form select {
+  width: 100%;
+  border: 1px solid #dfe6f1;
+  border-radius: 0.7rem;
+  padding: 0.62rem 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #1f2937;
+  background-color: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.register-form .alert {
+  margin-bottom: 0.8rem;
+  border-radius: 0.7rem;
+  padding: 0.7rem 0.85rem;
+}
+
+.register-form button[type="submit"] {
+  border-radius: 0.7rem;
+  padding: 0.72rem 1rem;
+  margin-top: 0.2rem;
+  font-weight: 600;
+}
+
+.register-card hr {
+  margin: 0.9rem 0 0.8rem;
+}
+
+.register-card p {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+.register-card a {
+  color: #0d6efd;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+  .register-page-shell {
+    padding: 1rem 0;
+  }
+
+  .register-card {
+    max-width: 100%;
+  }
+
+  .register-card .card-body {
+    padding: 1rem 0.9rem 0.9rem;
+  }
+
+  .register-card .card-header {
+    padding: 1rem 1rem 0.7rem;
+  }
+
+  .register-form button[type="submit"] {
+    width: 100%;
+  }
+}

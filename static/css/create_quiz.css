@@ -1,0 +1,124 @@
+.create-quiz-page {
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 0;
+}
+
+.create-quiz-card {
+  width: 100%;
+  max-width: 560px;
+  border: none;
+  border-radius: 1.1rem;
+  overflow: hidden;
+  box-shadow: 0 14px 35px rgba(13, 110, 253, 0.12);
+}
+
+.create-quiz-card .card-header {
+  background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+  border-bottom: none;
+  padding: 1.15rem 1.25rem 0.8rem;
+  color: #fff;
+}
+
+.create-quiz-card .card-header h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 2vw, 2.1rem);
+  font-weight: 700;
+  color: #fff;
+}
+
+.create-quiz-card .card-body {
+  padding: 1.2rem 1.4rem 1.1rem;
+}
+
+.create-quiz-form .mb-3 {
+  margin-bottom: 0.8rem !important;
+}
+
+.create-quiz-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.92rem;
+}
+
+.create-quiz-form input,
+.create-quiz-form select {
+  width: 100%;
+  border: 1px solid #dfe6f1;
+  border-radius: 0.7rem;
+  padding: 0.68rem 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #1f2937;
+  background-color: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.create-quiz-form input:focus,
+.create-quiz-form select:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+}
+
+.create-quiz-form button[type="submit"] {
+  border-radius: 0.7rem;
+  padding: 0.72rem 1rem;
+  font-weight: 600;
+  width: 100%;
+}
+
+.create-quiz-actions {
+  width: 100%;
+  max-width: 560px;
+  margin-top: 0.9rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.back-to-dashboard-btn {
+  border-width: 1.5px;
+  border-radius: 0.65rem;
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+  background-color: rgba(13, 110, 253, 0.04);
+  border-color: rgba(13, 110, 253, 0.45);
+  color: #0d6efd;
+  transition: all 0.2s ease-in-out;
+}
+
+.back-to-dashboard-btn:hover {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: #ffffff;
+  box-shadow: 0 0.35rem 0.8rem rgba(13, 110, 253, 0.2);
+}
+
+@media (max-width: 576px) {
+  .create-quiz-page {
+    padding: 1rem 0;
+  }
+
+  .create-quiz-card .card-body {
+    padding: 1rem 0.9rem 0.9rem;
+  }
+
+  .create-quiz-card .card-header {
+    padding: 1rem 1rem 0.7rem;
+  }
+
+  .create-quiz-actions {
+    width: 100%;
+  }
+
+  .back-to-dashboard-btn {
+    width: 100%;
+  }
+}

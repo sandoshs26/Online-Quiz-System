@@ -1,0 +1,66 @@
+{% extends "base.html" %} 
+
+{% load static %} 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/view_questions.css' %}" />
+{% endblock %} 
+
+{% block content %}
+<div class="view-questions-page">
+  <div
+    class="view-questions-header d-flex justify-content-between align-items-center flex-wrap gap-2"
+  >
+    <div>
+      <div class="view-questions-kicker">QUIZ CONTENT</div>
+      <h2>{{ quiz.title }}</h2>
+    </div>
+    <div class="toolbox">
+      <a href="{% url 'add_question' quiz.id %}" class="btn btn-primary btn-sm">
+        <i class="bi bi-plus-circle me-1"></i>Add New Question
+      </a>
+      <a
+        href="{% url 'teacher_dashboard' %}"
+        class="btn btn-outline-primary btn-sm"
+      >
+        <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+      </a>
+    </div>
+  </div>
+
+  {% for question in questions %}
+  <div class="card question-card mb-3">
+    <div class="card-body">
+      <div class="question-number">{{ forloop.counter }}</div>
+      <div class="question-text">{{ question.question }}</div>
+
+      <ul class="option-list">
+        <li>{{ question.option1 }}</li>
+        <li>{{ question.option2 }}</li>
+        <li>{{ question.option3 }}</li>
+        <li>{{ question.option4 }}</li>
+      </ul>
+
+      <div class="correct-answer">
+        <span class="badge bg-success-subtle text-success-emphasis"
+          >Correct Answer: {{ question.correct_answer }}</span
+        >
+      </div>
+
+      <div class="action-row">
+        <a
+          href="{% url 'edit_question' question.id %}"
+          class="btn btn-outline-primary btn-sm"
+          >Edit</a
+        >
+        <a
+          href="{% url 'delete_question' question.id %}"
+          class="btn btn-outline-danger btn-sm"
+          >Delete</a
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

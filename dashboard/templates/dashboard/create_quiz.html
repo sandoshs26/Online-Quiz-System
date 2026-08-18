@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/create_quiz.css' %}" />
+{% endblock %} {% block content %}
+<div class="create-quiz-page">
+  <div class="card create-quiz-card">
+    <div class="card-header text-center">
+      <h2>Create Quiz</h2>
+    </div>
+
+    <div class="card-body">
+      <form method="POST" class="create-quiz-form">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label>Quiz Title</label>
+          <input type="text" name="title" required />
+        </div>
+
+        <div class="mb-3">
+          <label>Subject</label>
+          <select name="subject" required>
+            {% for subject in subjects %}
+            <option value="{{ subject.id }}">{{ subject.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Quiz</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="create-quiz-actions">
+    <a
+      href="{% url 'teacher_dashboard' %}"
+      class="btn btn-outline-primary back-to-dashboard-btn"
+    >
+      <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+    </a>
+  </div>
+</div>
+{% endblock %}

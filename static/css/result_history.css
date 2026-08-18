@@ -1,0 +1,65 @@
+.result-history-page {
+  padding: 2rem 0 2.5rem;
+}
+
+.result-history-card {
+  border: 1px solid rgba(13, 110, 253, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.05);
+  overflow: hidden;
+  background: #fff;
+}
+
+.result-history-header {
+  background: linear-gradient(
+    135deg,
+    rgba(13, 110, 253, 0.08),
+    rgba(13, 110, 253, 0.02)
+  );
+  border-bottom: 1px solid rgba(13, 110, 253, 0.08);
+  padding: 1.4rem 1.4rem 1rem;
+}
+
+.result-history-header h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2vw, 2.4rem);
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.result-history-body {
+  padding: 1rem;
+}
+
+.result-history-table th,
+.result-history-table td {
+  vertical-align: middle;
+  padding: 0.9rem 0.8rem;
+}
+
+.result-history-table thead th {
+  background: #f8fbff;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.result-history-table tbody tr:hover {
+  background-color: #f8fbff;
+}
+
+.result-history-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.5rem;
+  padding: 0.38rem 0.75rem;
+  border-radius: 50rem;
+  font-weight: 700;
+  font-size: 0.72rem;
+}
+
+@media (max-width: 767.98px) {
+  .result-history-page {
+    padding-top: 1.25rem;
+  }
+}

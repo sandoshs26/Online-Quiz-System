@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}" />
+{% endblock %} {% block content %}
+
+<div class="login-page-shell">
+  <div class="card login-card">
+    <div class="card-header">
+      <div class="login-icon" aria-hidden="true">
+        <i class="bi bi-person-check"></i>
+      </div>
+      <h3>Welcome Back</h3>
+      <p>Sign in to continue your quiz journey</p>
+    </div>
+
+    <div class="card-body">
+      <form method="POST" class="auth-form">
+        {% csrf_token %} {% if form.non_field_errors %}
+        <div class="alert alert-danger" role="alert">
+          {% for error in form.non_field_errors %} {{ error }} {% endfor %}
+        </div>
+        {% endif %} {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+
+        <div class="register-row">
+          <p>Don't have an account?</p>
+          <a href="{% url 'register' %}" class="btn btn-outline-primary"
+            >Register</a
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

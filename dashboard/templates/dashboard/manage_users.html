@@ -1,0 +1,72 @@
+{% extends "base.html" %} {% load static %} {% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/manage_users.css' %}" />
+{% endblock %} {% block content %}
+<div class="manage-users-page">
+  <div class="manage-users-header">
+    <div class="manage-users-kicker">USER MANAGEMENT</div>
+    <h2>Manage Users</h2>
+  </div>
+
+  <div class="user-section">
+    <div class="card section-card">
+      <div class="card-header">
+        <h3 class="card-title">Teachers</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover manage-users-table align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for teacher in teachers %}
+              <tr>
+                <td>{{ teacher.username }}</td>
+                <td>{{ teacher.email }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="user-section">
+    <div class="card section-card">
+      <div class="card-header">
+        <h3 class="card-title">Students</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover manage-users-table align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for student in students %}
+              <tr>
+                <td>{{ student.username }}</td>
+                <td>{{ student.email }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-link">
+    <a href="{% url 'admin_dashboard' %}" class="btn btn-outline-secondary">
+      <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+    </a>
+  </div>
+</div>
+{% endblock %}

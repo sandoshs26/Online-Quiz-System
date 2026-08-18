@@ -1,0 +1,88 @@
+{% extends "base.html" %} 
+
+{% load static %} 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/student_dashboard.css' %}" />
+{% endblock %} 
+
+{% block content %}
+<div class="student-dashboard-page">
+  <div class="student-dashboard-header">
+    <div class="dashboard-kicker">STUDENT PORTAL</div>
+    <h1>Student Dashboard</h1>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6 col-xl-3">
+      <div class="card student-dashboard-card h-100">
+        <div class="card-body">
+          <div class="action-icon"><i class="bi bi-pencil-square"></i></div>
+          <div class="action-card-title">Attend Quiz</div>
+          <p class="action-card-text">
+            Start a new assessment and challenge yourself with the available
+            quizzes.
+          </p>
+          <a
+            href="{% url 'quiz_list' %}"
+            class="btn btn-primary action-card-link"
+            >Open Quizzes</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+      <div class="card student-dashboard-card h-100">
+        <div class="card-body">
+          <div class="action-icon"><i class="bi bi-trophy"></i></div>
+          <div class="action-card-title">Leaderboard</div>
+          <p class="action-card-text">
+            View your ranking and compare performance against other students.
+          </p>
+          <a
+            href="{% url 'leaderboard' %}"
+            class="btn btn-outline-primary action-card-link"
+            >View Rankings</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+      <div class="card student-dashboard-card h-100">
+        <div class="card-body">
+          <div class="action-icon"><i class="bi bi-clock-history"></i></div>
+          <div class="action-card-title">Result History</div>
+          <p class="action-card-text">
+            Track your recent quiz results and review your performance over
+            time.
+          </p>
+          <a
+            href="{% url 'result_history' %}"
+            class="btn btn-outline-primary action-card-link"
+            >View History</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xl-3">
+      <div class="card student-dashboard-card h-100">
+        <div class="card-body">
+          <div class="action-icon"><i class="bi bi-box-arrow-right"></i></div>
+          <div class="action-card-title">Logout</div>
+          <p class="action-card-text">
+            Securely sign out from your student account when you are done.
+          </p>
+          <a
+            href="{% url 'logout' %}"
+            class="btn btn-outline-secondary action-card-link"
+            >Log Out</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
