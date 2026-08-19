@@ -20,12 +20,12 @@ def teacher_dashboard(request):
     if request.user.role != "TEACHER":
         return HttpResponseForbidden("Access Denied")
 
-    quizzes = Quiz.objects.all()
+    quizzes = Quiz.objects.filter(teacher=request.user)
 
     total_quizzes = Quiz.objects.count()
-    total_questions = Question.objects.count()
-    total_students = CustomUser.objects.filter(role="STUDENT").count()
-    total_attempts = Result.objects.count()
+    total_questions = Question.objects.filter(quiz__teacher=request.user).count()
+    total_students = Result.objects.filter(quiz__teacher=request.user).values("student").distinct().count()
+    total_attempts = Result.objects.filter(quiz__teacher=request.user).count()
 
     return render(request, "dashboard/teacher_dashboard.html",{
         "quizzes":quizzes,
@@ -56,7 +56,8 @@ def create_quiz(request):
 
          Quiz.objects.create(
              title = title,
-             subject = subject
+             subject = subject,
+             teacher = request.user
          )
 
          return redirect("teacher_dashboard")
@@ -68,7 +69,7 @@ def edit_quiz(request,quiz_id):
     if request.user.role != "TEACHER":
         return HttpResponseForbidden("Access Denied")
 
-    quiz = get_object_or_404(Quiz,id=quiz_id)
+    quiz = get_object_or_404(Quiz,id=quiz_id,teacher=request.user)
     subjects = Subject.objects.all()
 
     if request.method == "POST":
@@ -85,7 +86,7 @@ def delete_quiz(request,quiz_id):
     if request.user.role != "TEACHER":
         return HttpResponseForbidden("Access Denied")
 
-    quiz = get_object_or_404(Quiz,id=quiz_id)
+    quiz = get_object_or_404(Quiz,id=quiz_id,teacher=request.user)
     quiz.delete()
 
     return redirect("teacher_dashboard")
@@ -95,7 +96,7 @@ def add_question(request,quiz_id):
     if request.user.role != "TEACHER":
         return HttpResponseForbidden("Access Denied")
 
-    quiz = get_object_or_404(Quiz, id = quiz_id)
+    quiz = get_object_or_404(Quiz, id = quiz_id,teacher=request.user)
 
     if request.method == "POST":
 
@@ -119,7 +120,7 @@ def view_questions(request,quiz_id):
     if request.user.role != "TEACHER":
         return HttpResponseForbidden("Access Denied")
 
-    quiz = get_object_or_404(Quiz,id=quiz_id)
+    quiz = get_object_or_404(Quiz,id=quiz_id,teacher=request.user)
     questions = Question.objects.filter(quiz=quiz)
 
     return render(request,"dashboard/view_questions.html",{"quiz":quiz,"questions":questions})
@@ -129,7 +130,7 @@ def edit_question(request,question_id):
     if request.user.role != "TEACHER":
         return HttpResponseForbidden("Access Denied")
 
-    question = get_object_or_404(Question,id=question_id)
+    question = get_object_or_404(Question,id=question_id,quiz__teacher=request.user)
 
     if request.method == "POST":
         question.question = request.POST.get("question")
@@ -150,7 +151,7 @@ def delete_question(request,question_id):
     if request.user.role != "TEACHER":
         return HttpResponseForbidden("Access Denied")
 
-    question = get_object_or_404(Question,id=question_id)
+    question = get_object_or_404(Question,id=question_id,quiz_teacher=request.user)
     quiz_id = question.quiz.id
 
     question.delete()
@@ -162,7 +163,7 @@ def teacher_results(request):
     if request.user.role != "TEACHER":
         return HttpResponseForbidden("Access Denied")
 
-    results = Result.objects.all().order_by("-id")
+    results = Result.objects.filter(quiz__teacher=request.user).order_by("-id")
 
     return render(request,"dashboard/teacher_results.html",{"results":results})
 
@@ -181,6 +182,15 @@ def leaderboard(request):
     if request.user.role not in ["TEACHER","STUDENT"]:
         return HttpResponseForbidden("Access Denied")
 
-    leaderboard = Result.objects.select_related("student","quiz").order_by("-score","created_at")
+    if request.user.role == "TEACHER":
+        leaderboard = Result.objects.filter(
+            quiz__teacher=request.user
+        ).select_related(
+            "student","quiz"
+        ).order_by("-score","created_at")
+    else:
+        leaderboard = Result.objects.select_related(
+            "student","quiz"
+        ).orderby("-score","created_at")
 
     return render(request,"dashboard/leaderboard.html",{"leaderboard":leaderboard})

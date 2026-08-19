@@ -6,6 +6,7 @@ from django.utils import timezone
 # Create your models here.
 class Quiz(models.Model):
     subject = models.ForeignKey(Subject,on_delete=models.CASCADE)
+    teacher = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,related_name='quizzes',null=True,blank=True)
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     duration = models.IntegerField(default=30)
